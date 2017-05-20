@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Demo Js</title>
+    <style>
+    body {
+    		background: #f3f3f6;
+    		background-color: #1c3643;
+    		font-size: 'sans';
+    }
+
+    #creador {
+    	color: #f6f6f6;
+    	position: fixed;
+    	top: 1em;
+    	right: 2em;
+    }
+
+        h1 {
+        	color : whitesmoke;
+        	display: block;
+        	position: absolute;
+        	top: -2.5em;
+        	color: #f3f3f6;
+        	border-bottom: 3px solid #434343;
+        	left: 0.4em;
+        }
+
+
+            
+            #contenedor {
+            	                border-radius: 0.35em;
+            	                background-color: #f3f3f6;
+            }
+            section {
+            	position: relative;
+                display: block;
+                text-align: center;
+                margin: 0 auto;
+                max-width: 480px;
+            }
+
+        .box {
+            background-color: #0791e6;
+            color: whitesmoke;
+            border-radius: 0.24em;
+            box-shadow: inset 0 -0.2em rgba(0,0,0,.3);
+            display: inline-block;
+            text-align: center;
+            font-weight: bolder;
+            padding: 5px;
+            font-weight: 700;
+            margin: 2px;
+            line-height: 30px;
+            min-width: 30px;
+            max-width: 30px;
+            min-height: 30px;
+            max-height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<section id="contenedor">
+	 <h1>
+		Algoritmo <strong>ShakerSort</strong>
+	</h1>
+	<article id="array">
+	</article>
+</section>
+<div id="creador">
+	Creado por <strong> Mario Josue Grieco Villamizar </strong>
+	<br/>
+	<span>@griecomv</span>
+</div>
+
+<script type="text/javascript" src="jquery-1.7.min.js"></script>
+<script type="text/javascript">
+
+            var _body = $("#contenedor");
+            var _Array = $("#array");
+            var arreglo_modificado = [];
+
+            function  setPos(w,h){
+                var y = parseInt($("#array").height());
+                // var x = _Array.width();
+                 _body.css("margin-top",(h/2)-(y));
+                //  _body.css("margin-left", (w/2)-x);
+            }
+                        
+            arreglo_modificado.push = (function(){
+                    var overload = Array.prototype.push;
+                    
+                    return function(){
+                        var item = parseInt( ((Math.random()*100)%101));
+                         overload.apply(this,[item]);
+                        _Array.append( $( "<div class='box "+"box"+this.length+"'>"+ item + "</div>") );
+
+                    };
+            }());
+
+            for ( let i = 0; i < 10; i++){    
+                arreglo_modificado.push(i);
+            }
+
+            setPos(window.innerWidth,window.innerHeight);
+
+            window.addEventListener("resize",function(){
+                    setPos(this.innerWidth,this.innerHeight);
+            });
+
+
+  
+</script>
+<script type="text/javascript" src="anime.min.js"></script>
+<script>
+
+var timelineParameters = anime.timeline({});
+
+ function swap(index,Cola,length){
+
+ 		var index_a = Cola[index][0];
+ 		var index_b = Cola[index][1];
+        var distancia = index_b-index_a;
+        var moveM = parseInt($(".box").css("margin-right"));
+        var moveW = parseInt($(".box").width());
+        var moveP = parseInt($(".box").css("padding-right"));
+
+        var x = ((moveP*2)+(moveM*2)+moveW);
+
+        var moveMY = parseInt($(".box").css("margin-top"));
+        var moveWY = parseInt($(".box").height());
+        var movePY = parseInt($(".box").css("padding-top"));
+
+        var y = ((movePY*2)+(moveMY*2)+moveWY);
+        
+        var data = $(".box"+index_a).text();
+        var data2 = $(".box"+index_b).text();
+        var extra = 0.4;
+
+
+        if ( window.innerWidth < x*(length+0.5)) {
+        		alert("el tamaño del a ventana es demaciado pequeñoooo!!!");
+        		alert("No se animara!!!");
+        		return 1;
+        };
+
+
+
+        timelineParameters = anime.timeline({});
+        
+         timelineParameters.add({
+            targets: '#array .box'+index_a,
+            translateX: [ { value: 0 }, { value: x*distancia }, { value: x*distancia } ],
+            translateY: [ { value: y+extra }, { value: y+extra }, { value: 0 } ],
+            duration: 2000, 
+            offset: 5,
+            backgroundColor: [
+                {value: '#ccc'}, // Or #FFFFFF
+                {value: 'rgb(255, 0, 0)'},
+                {value: 'hsl(100, 60%, 60%)'}
+            ],
+            // complete : function(){
+            // }
+        })
+        .add({
+            targets: '#array .box'+index_b,
+            translateX: [ { value: 0 }, { value: -x*distancia }, { value: -x*distancia } ],
+            translateY: [ { value: -(y+extra) }, { value: -(y+extra) }, { value: 0 } ],
+            duration: 2000,
+            offset: 8,
+            backgroundColor: [
+                {value: '#ccc'}, // Or #FFFFFF
+                {value: 'rgb(255, 0, 0)'},
+                {value: 'hsl(100, 60%, 60%)'}
+            ],       
+            // complete : function(){
+            // }
+        });
+
+        timelineParameters.complete = function(){
+                    
+                    $(".box"+index_a).text(data2);
+                    $(".box"+index_a).css({
+                        'transform' : 'translateX(0px) translateY(0px)',
+                    });
+
+                    $(".box"+index_b).text(data);
+                    $(".box"+index_b).css({
+                        'transform' : 'translateX(0px) translateY(0px)',
+                    });
+                        // ir verificando cuando se ordena!!
+                        
+                        index = index+1;
+
+                        if (  index < Cola.length) {
+                        	swap(index,Cola,length);
+                        }
+                        else {
+                        	for (var i = 1; i < length+1; i++) {
+                        		$(".box"+i).css("background-color","#7fc719");
+                        	}
+                        }
+
+    	}
+    	timelineParameters.update = function(){
+
+    		            if ( index_a-1 > 0 ) {                	
+		                    if ( parseInt($(".box"+(index_a-1)).text()) >  parseInt($(".box"+index_a).text()) )
+		                    {
+		                    	$(".box"+(index_a-1)).css("background-color","red");
+		                        // $(".box"+index_a).css("background-color","red");
+		                    }
+                        }
+						
+						if ( index_a+1 <= 10 ) {                	
+		                    if ( parseInt($(".box"+(index_a+1)).text()) <  parseInt($(".box"+index_a).text()) )
+		                    {
+		                        // $(".box"+index_a).css("background-color","red");
+		                        $(".box"+(index_a+1)).css("background-color","red");
+		                    }
+                        }
+
+                        if ( index_b-1 > 0 ) {                	
+		                    if ( parseInt($(".box"+(index_b-1)).text()) >  parseInt($(".box"+index_b).text()) )
+		                    {
+		                        // $(".box"+index_b).css("background-color","red");
+		                        $(".box"+(index_b-1)).css("background-color","red");
+		                    }
+                        }
+						
+						if ( index_b+1 <= 10 ) {                	
+		                    if ( parseInt($(".box"+(index_b+1)).text()) <  parseInt($(".box"+index_b).text()) )
+		                    {
+		                        // $(".box"+index_b).css("background-color","red");
+		                        $(".box"+(index_b+1)).css("background-color","red");
+		                    }
+                        }
+    	}
+
+ }
+</script>
+
+<script type="text/javascript">
+
+
+function shellSort(a, b){
+
+	  var Cola = [];
+	  var index = 0;
+      var pivote = parseInt((b-1)/2);
+      var bandera = true;
+      
+      while ( pivote > 0 ) {
+        bandera = false;
+          for (var i = 0; i+pivote < b; i++) {
+             
+             if ( a[i] > a[i+pivote]) {
+                
+                Cola.push([(i+1),(i+pivote+1)]);
+                var temp = a[i];
+                a[i] = a[i+pivote];
+                a[i+pivote] = temp;
+                bandera = true;
+             }
+          
+          }
+          if ( bandera == false ) {
+              pivote = parseInt(pivote/2);
+          }
+      }
+      swap(0,Cola,b);
+ }
+
+
+
+ function bubbleSort(a,largo){
+ 	  var Cola = [];
+	  var index = 0;
+      var go = true;
+        for (var i = 0; i < largo-1 && go; i++) {
+          go = false;
+          for (var x = 0; x < largo-1-i; x++) {
+              if ( a[x] > a[x+1]) {
+                  go = true;
+                Cola.push([(x+1),(x+2)]);
+                var temp = a[x];
+                a[x] = a[x+1];
+                a[x+1] = temp;
+              }
+          }
+        }
+
+         swap(0,Cola,largo);
+
+}
+
+function insertionSort(a,largo){
+       var menor;
+       var Cola = [];
+	   var index = 0;
+        for (var i = 1; i < largo; i++) {
+          menor = i;
+              for (var x = i-1; x >= 0; x--) {
+                  if ( a[menor]<a[x] ) {
+                      menor = x;
+                      Cola.push([(x+1),(x+2)]);
+		        		var temp = a[x];
+		        		a[x] = a[x+1];
+		        		a[x+1] = temp;
+                  }
+              }
+
+        }
+        swap(0,Cola,largo);
+}
+
+function shakerSort(array,largo){
+      var min = 0;
+      var sup = largo;
+      var bufer;
+      var Cola = [];
+	  var index = 0;
+
+     do {
+
+
+      for (var i = min; i < sup-1; i++) {
+            if ( array[i] > array[i+1] ) {
+               Cola.push([(i+1),(i+2)]);
+		        		var temp = array[i];
+		        		array[i] = array[i+1];
+		        		array[i+1] = temp;
+            }
+      }
+      sup--;
+
+      for (var i = sup-1; i > min; i--) {
+        if ( array[i] < array[i-1] ) {
+                       Cola.push([(i+1),(i)]);
+		        		var temp = array[i];
+		        		array[i] = array[i-1];
+		        		array[i-1] = temp;
+        }
+      }
+      min++;
+
+	      if ( !(sup-min > 0) ) {
+	         break;
+	      }
+
+
+      }while(sup-min > 0);
+   
+   swap(0,Cola,largo);
+}
+
+
+
+
+function quickSort(array,start /* --> 0  */,end  /* --> N-1  */){
+		var Cola = [];
+		var index = 0;
+		callBack(array,start /* --> 0  */,end  /* --> N-1  */,Cola);
+		swap(0,Cola,end+1);
+};
+
+function callBack(array,start /* --> 0  */,end  /* --> N-1  */,Cola){
+
+	var i = start;
+	var j = end;
+	var pivote = start;
+
+	do{
+
+	while( ( array[i] < array[pivote] ) && i+1 <= end ) i++;
+	while( ( array[j] > array[pivote] ) && j-1 >= start ) j--;
+
+			if (  j-i > 0 )
+			{
+				Cola.push([(i+1),(j+1)]);
+		        var temp = array[i];
+		        array[i] = array[j];
+		        array[j] = temp;
+				
+				i++;
+				j--;
+			}else{
+				break;
+			}
+
+	}while((j-i > 0));
+		
+		if ( array[j] < array[pivote] )  // need to be n-1 for !ascedente be carefull!!!
+		{
+		    	Cola.push([(j+1),(pivote+1)]);
+             	var temp = array[j];
+                array[j] = array[pivote];
+                array[pivote] = temp;
+		}
+			if (  j > start )
+			{
+			    callBack(array,start,j-1,Cola);
+			}
+	
+			if ( j+1 < end )
+			{		
+				callBack(array,j+1,end,Cola);		
+			}
+
+			if ( !(j > start) && !(j+1 < end) ) 
+			{
+				return 1;
+			}
+
+}
+	shakerSort(arreglo_modificado,arreglo_modificado.length);
+
+</script>
+</body>
+</html>
