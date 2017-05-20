@@ -1,0 +1,15 @@
+Quería compartir esta pagina que ando creando en la cual se pueden ver como funcionan por ahora solo unos de los algoritmos mas básicos de ordenamiento, pronto se mejoraran y cargaran todos. para aquellos que estén estudiando ing. informática,sistemas es bastante común ver esto en la universidad, quizá sea de gran ayuda ya que están los algoritmos en esa pagina.
+ademas de esta ->
+](https://mariogrieco.github.io/SortAnime/)
+
+Algoritmos de Ordenamiento.
+ShakerSort
+QuickSort ( algunos casos muy no ordena todo por los momentos )
+InsertionSort
+ShellSort
+BubbleSort
+
+esta creado a machetazos (es mi primera app con js), uso
+estas cosas pasan cuando vas de c a js de golpe jajaja Exitos!
+para los que no lo conocían ! javascript animation engine!!.
+espero que les guste este prototypo!!
