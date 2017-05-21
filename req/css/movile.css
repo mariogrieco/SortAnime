@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 420px) {
-     .box {
+    .box {
         padding: 2px;
         font-weight: 700;
         margin: 2px;
@@ -68,6 +68,12 @@
         max-height: 20px;
     }
     section {
-            max-width: 300px;
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-height: 320px) {
+    #contenedor {
+        margin-top: 5em !important;
     }
 }
