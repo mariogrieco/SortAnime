@@ -58,7 +58,7 @@ function swap(index, Cola, length) {
                     value: 'rgb(255, 0, 0)'
                 },
                 {
-                    value: 'hsl(100, 60%, 60%)'
+                    value: '#3e9f56'
                 }
             ],
             // complete : function(){
@@ -89,7 +89,7 @@ function swap(index, Cola, length) {
                     value: 'rgb(255, 0, 0)'
                 },
                 {
-                    value: 'hsl(100, 60%, 60%)'
+                    value: '#3e9f56'
                 }
             ],
             // complete : function(){

@@ -1,14 +1,18 @@
-/* color: #3e9f56; */
-
 body {
     background: #f3f3f6;
     background-color: #1c3643;
     font-size: 16px;
     font-family: 'Oswald', sans-serif;
+    text-align: center;
 }
 
 body span {
     color: #ccc;
+}
+
+#select {
+    background: rgb(241, 239, 239);
+    color: #434343 !important;
 }
 
 select {
@@ -16,40 +20,50 @@ select {
 }
 
 select option:enabled {
-    color: #434343 !important;
+    color: black !important;
 }
 
 select option:disabled {
     color: #ccc !important;
 }
 
-#select {
-    display: block;
+.select {
+    display: inline-block;
+    padding: 0.2em 0em;
     text-align: center;
+    border-bottom: 3px solid whitesmoke;
+    
 }
 
-#select span {
-    margin: 0em 0.2em;
+.select span {
+    /*display: block;*/
+    color: #434343;
+    margin: 0.4em 0.5em;
 }
 
 #creador {
-    color: #f6f6f6;
+    color: #ccc;
     position: fixed;
-    bottom: 0em;
-    left: 0;
+    bottom: 1em;
+    left: 1em;
+    text-align: left;
+}
+
+#creador strong {
+    color: #f6f6f6;
 }
 
 h1 {
-    color: whitesmoke;
     display: block;
     position: absolute;
-    top: -3em;
+    top: -2.7em;
     color: #f3f3f6;
     border-bottom: 3px solid #434343;
-    left: 0.4em;
+    left: 0.2em;
 }
 
 #contenedor {
+    width: auto;
     border-radius: 0.35em;
     background-color: #f3f3f6;
     padding: 1px 0px 1px 0px;
@@ -60,7 +74,7 @@ section {
     display: block;
     text-align: center;
     margin: 0 auto;
-    max-width: 480px;
+    max-width: 520px;
 }
 
 .box {

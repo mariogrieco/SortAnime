@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<title>Demo Js</title>
+	<link rel="stylesheet" href="req/css/normalize.css">
 	<style>
 		@import url('https://fonts.googleapis.com/css?family=Oswald|Passion+One');
 	</style>
@@ -11,10 +13,12 @@
 	<link rel="stylesheet" href="req/css/movile.css" />
 	</style>
 </head>
+
 <body>
 	<div id="select">
-		<span>Algoritmo Ordenamiento: </span>
-		<select>
+		<div class="select">
+			<span>Algoritmo Ordenamiento: </span>
+			<select>
 			<option selected disabled>??????</option>
 			<option value="ShakerSort">ShakerSort</option>
 			<option value="QuickSort">QuickSort</option>
@@ -39,8 +43,10 @@
 			<option disabled>beadSort</option>
 			<option disabled>cubeSort</option>
 		</select>
-		<span>Algoritmo Busqueda: </span>
-		<select>
+		</div>
+		<div class="select">
+			<span>Algoritmo Busqueda: </span>
+			<select>
 			<option selected disabled>??????</option>
 			<option disabled>binarySearch</option>
 			<option disabled>jumpSearch</option>
@@ -49,6 +55,7 @@
 			<option disabled>ternarySearch</option>
 			<option disabled>A* mistiSearch</option>
 		</select>
+		</div>
 	</div>
 	<section id="contenedor">
 		<h1>
@@ -58,9 +65,9 @@
 		</article>
 	</section>
 	<div id="creador">
-		Creado por <strong> Mario Josue Grieco Villamizar </strong>
+		<del>Creado</del> En desarrollo por <strong> <u>Mario Josue Grieco Villamizar</u> </strong>
 		<br/>
-		<span>@griecomv Twitter</span>
+		<span> @griecomv Twitter</span>
 	</div>
 	<script type="text/javascript" src="req/js/jquery-1.7.min.js"></script>
 	<script type="text/javascript" src="req/js/decorator.js"></script>
@@ -74,15 +81,14 @@
 	<script type="text/javascript">
 		// CONTROLADOR 
 		var a;
-	$("select")[0].addEventListener("change",function(){
-				timelineParameters.pause();
-				setIn();
-				$("#contenedor h1").text(this.value);
-			setTimeout( () =>{
-				window[this.value](arreglo_modificado,arreglo_modificado.length);
-			},500);
-	});
-
+		$("select")[0].addEventListener("change", function () {
+			timelineParameters.pause();
+			setIn();
+			$("#contenedor h1").text(this.value);
+			setTimeout(() => {
+				window[this.value](arreglo_modificado, arreglo_modificado.length);
+			}, 500);
+		});
 	</script>
 </body>
 
