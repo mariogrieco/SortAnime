@@ -1,7 +1,5 @@
 /* color: #3e9f56; */
 
-
-
 body {
     background: #f3f3f6;
     background-color: #1c3643;
@@ -12,16 +10,25 @@ body {
 body span {
     color: #ccc;
 }
-   #select {
-        display: block;
-        text-align: center;
-        padding-top: 1.5em;
-    }
-    
-  #select span {
-      margin: 0em 0.2em;
-  }
+select {
+    color: #434343;
+}
 
+select option:enabled {
+    color: #434343;;
+}
+select option:disabled {
+    color: #ccc;
+}
+
+#select {
+    display: block;
+    text-align: center;
+}
+
+#select span {
+    margin: 0em 0.2em;
+}
 
 #creador {
     color: #f6f6f6;

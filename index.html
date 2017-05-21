@@ -13,12 +13,41 @@
 </head>
 <body>
 	<div id="select">
-		<span>Algoritmo: </span>
+		<span>Algoritmo Ordenamiento: </span>
 		<select>
+			<option selected disabled>??????</option>
 			<option value="ShakerSort">ShakerSort</option>
 			<option value="QuickSort">QuickSort</option>
 			<option value="InsertionSort">InsertionSort</option>
 			<option value="BubbleSort">BubbleSort</option>
+			<option value="ShellSort">ShellSort</option>
+			<option disabled>MergeSort</option>
+			<option disabled>RadixSort</option>  
+			<option disabled>SelectionSort</option>  
+			<option disabled>heapSort</option>
+			<option disabled>patienceSort</option>
+			<option disabled>simplepancakeSort</option>
+			<option disabled>timSort</option>
+			<option disabled>unShuffleSort</option>
+			<option disabled>stoogeSort</option>
+			<option disabled>strandSort</option>
+			<option disabled>spaghettiSort</option>
+			<option disabled>postmanSort</option>
+			<option disabled>flashSort</option>
+			<option disabled>cocktailSort</option>
+			<option disabled>bogoSort</option>
+			<option disabled>beadSort</option>
+			<option disabled>cubeSort</option>
+		</select>
+		<span>Algoritmo Busqueda: </span>
+		<select>
+			<option selected disabled>??????</option>
+			<option disabled>binarySearch</option>
+			<option disabled>jumpSearch</option>
+			<option disabled>sequentialSearch</option>
+			<option disabled>interpolationSearch</option>
+			<option disabled>ternarySearch</option>
+			<option disabled>A* mistiSearch</option>
 		</select>
 	</div>
 	<section id="contenedor">
@@ -48,6 +77,7 @@
 	$("select")[0].addEventListener("change",function(){
 				timelineParameters.pause();
 				setIn();
+				$("#contenedor h1").text(this.value);
 			setTimeout( () =>{
 				window[this.value](arreglo_modificado,arreglo_modificado.length);
 			},500);
