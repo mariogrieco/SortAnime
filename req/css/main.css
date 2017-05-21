@@ -10,15 +10,17 @@ body {
 body span {
     color: #ccc;
 }
+
 select {
     color: #434343;
 }
 
 select option:enabled {
-    color: #434343;;
+    color: #434343 !important;
 }
+
 select option:disabled {
-    color: #ccc;
+    color: #ccc !important;
 }
 
 #select {
