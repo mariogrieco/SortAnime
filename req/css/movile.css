@@ -1,0 +1,16 @@
+@media screen and (max-width: 480px) {
+    .box {
+        padding: 2px;
+        font-weight: 700;
+        margin: 2px;
+        line-height: 20px;
+        min-width: 20px;
+        max-width: 20px;
+        min-height: 20px;
+        max-height: 20px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+}
