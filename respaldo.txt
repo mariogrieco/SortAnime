@@ -5,29 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>Demo Js</title>
     <style>
-		@import url('https://fonts.googleapis.com/css?family=Oswald|Passion+One');
-	</style> 
-    <style>
-
     body {
     		background: #f3f3f6;
     		background-color: #1c3643;
-    		font-size: 16px;
-    		font-family: 'Oswald', sans-serif; 
-       }
+    		font-size: 'sans';
+    }
 
     #creador {
     	color: #f6f6f6;
     	position: fixed;
-    	right: 1em;
-    	bottom: 2em;
+    	top: 1em;
+    	right: 2em;
     }
 
         h1 {
         	color : whitesmoke;
         	display: block;
         	position: absolute;
-        	top: -3em;
+        	top: -2.5em;
         	color: #f3f3f6;
         	border-bottom: 3px solid #434343;
         	left: 0.4em;
@@ -48,10 +43,8 @@
             }
 
         .box {
-			font-family: 'Oswald', sans-serif;
-			font-size: larger;
             background-color: #0791e6;
-            color: white;
+            color: whitesmoke;
             border-radius: 0.24em;
             box-shadow: inset 0 -0.2em rgba(0,0,0,.3);
             display: inline-block;
@@ -67,71 +60,12 @@
             max-height: 30px;
         }
 
-
-        #control {
-        	position: fixed;
-        	color: #c0c0c0;
-        	top: 0px;
-        	left: 0px;
-        }
-
-        #control ul li {
-        	padding: 0.13em;
-        }
-        #control ul li:hover {
-        	color: white;
-        	cursor: pointer;
-        }
-         #control ul li:active {
-        	color: #22bce0;
-        }
-        #control ul strong,#control ul i {
-        	color: #eee;
-        }
-
-    </style>
-    <style type="text/css">
-		@media screen and (max-width: 480px) {
-        	.box {
-                padding: 2px;
-                font-weight: 700;
-                margin: 2px;
-                line-height: 20px;
-                min-width: 20px;
-                max-width: 20px;
-                min-height: 20px;
-                max-height: 20px;
-            }
-
-            body {
-                padding-top: 5em;
-            }
-            #control ul i {
-                display: block;
-                
-            }
-              #control ul strong {
-                  text-align: center;
-              } 
-	}
-</style>
     </style>
 </head>
 <body>
-<span id="control">
-	<ul>
-		<strong>Algoritmos de Ordenamiento.</strong><i> ( APP en desarrollo )</i> 	
-		<li>ShakerSort</li>
-		<li>QuickSort</li> <em>- Temporal</em>
-		<li>InsertionSort</li>
-		<li>ShellSort</li>
-		<li>BubbleSort</li>
-	</ul>
-	<br>
-</span>
 <section id="contenedor">
 	 <h1>
-		 Selecciona algun <strong>Algoritmo</strong>
+		Algoritmo <strong>ShakerSort</strong>
 	</h1>
 	<article id="array">
 	</article>
@@ -139,7 +73,7 @@
 <div id="creador">
 	Creado por <strong> Mario Josue Grieco Villamizar </strong>
 	<br/>
-	<span>@griecomv Twitter</span>
+	<span>@griecomv</span>
 </div>
 
 <script type="text/javascript" src="jquery-1.7.min.js"></script>
@@ -155,8 +89,7 @@
                  _body.css("margin-top",(h/2)-(y));
                 //  _body.css("margin-left", (w/2)-x);
             }
-
-
+                        
             arreglo_modificado.push = (function(){
                     var overload = Array.prototype.push;
                     
@@ -168,16 +101,10 @@
                     };
             }());
 
-   	                   
-            function setIn(){
-            	arreglo_modificado.length = 0;
-              for ( let i = 0; i < 10; i++){    
-               	arreglo_modificado.push(i);
-              }
-            }   
+            for ( let i = 0; i < 10; i++){    
+                arreglo_modificado.push(i);
+            }
 
-            setIn();
-            
             setPos(window.innerWidth,window.innerHeight);
 
             window.addEventListener("resize",function(){
@@ -215,9 +142,8 @@ var timelineParameters = anime.timeline({});
 
 
         if ( window.innerWidth < x*(length+0.5)) {
-        		alert("el tamaño del a ventana es demaciado pequeño!!!");
+        		alert("el tamaño del a ventana es demaciado pequeñoooo!!!");
         		alert("No se animara!!!");
-        		console.log(x*(length+0.5));
         		return 1;
         };
 
@@ -320,7 +246,7 @@ var timelineParameters = anime.timeline({});
 <script type="text/javascript">
 
 
-function ShellSort(a, b){
+function shellSort(a, b){
 
 	  var Cola = [];
 	  var index = 0;
@@ -350,7 +276,7 @@ function ShellSort(a, b){
 
 
 
- function BubbleSort(a,largo){
+ function bubbleSort(a,largo){
  	  var Cola = [];
 	  var index = 0;
       var go = true;
@@ -371,7 +297,7 @@ function ShellSort(a, b){
 
 }
 
-function InsertionSort(a,largo){
+function insertionSort(a,largo){
        var menor;
        var Cola = [];
 	   var index = 0;
@@ -391,7 +317,7 @@ function InsertionSort(a,largo){
         swap(0,Cola,largo);
 }
 
-function ShakerSort(array,largo){
+function shakerSort(array,largo){
       var min = 0;
       var sup = largo;
       var bufer;
@@ -434,10 +360,10 @@ function ShakerSort(array,largo){
 
 
 
-function QuickSort(array,end){
+function quickSort(array,start /* --> 0  */,end  /* --> N-1  */){
 		var Cola = [];
 		var index = 0;
-		callBack(array,0 /* --> 0  */,end-1 /* --> N-1  */,Cola);
+		callBack(array,start /* --> 0  */,end  /* --> N-1  */,Cola);
 		swap(0,Cola,end+1);
 };
 
@@ -490,20 +416,7 @@ function callBack(array,start /* --> 0  */,end  /* --> N-1  */,Cola){
 			}
 
 }
-</script>
-<script type="text/javascript">
-
-		var actos = $("li");
-		for (let i = 0; i < actos.length; i++) {
-			actos[i].addEventListener("click", function(){
-				timelineParameters.pause();
-				_Array.html("")
-				setIn();
-				$("h1").text(actos[i].textContent);
-				window[actos[i].textContent](arreglo_modificado,arreglo_modificado.length);
-				console.log(actos[i].textContent);
-			});
-		};
+	shakerSort(arreglo_modificado,arreglo_modificado.length);
 
 </script>
 </body>
